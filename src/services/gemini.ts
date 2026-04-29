@@ -187,13 +187,13 @@ export async function getMarketSummary(): Promise<MarketSummaryData> {
   }
 
   const model = "gemini-3-flash-preview";
-  const prompt = `Obtenha dados REAIS E ATUAIS de hoje (${new Date().toLocaleDateString('pt-BR')}) sobre o mercado financeiro brasileiro (B3).
-  Use o Google Search para encontrar:
-  1. Valores e variações (%) do Ibovespa, IFIX, SMLL e Dólar (comercial).
-  2. As 3 ações com maiores altas e as 3 com maiores baixas no dia.
-  3. As 3 notícias mais relevantes do mercado financeiro de hoje.
+  const prompt = `Resumo RÁPIDO do mercado B3 hoje (${new Date().toLocaleDateString('pt-BR')}).
+  Use Google Search para dados ATUAIS:
+  1. Ibovespa, IFIX, SMLL e Dólar (R$ e %).
+  2. 3 Maiores Altas e 3 Maiores Baixas.
+  3. 3 Notícias do dia.
   
-  Formate a resposta estritamente como JSON em PORTUGUÊS. Seja extremamente rápido e conciso.`;
+  JSON em PORTUGUÊS. Priorize velocidade.`;
 
   const response = await ai.models.generateContent({
     model,

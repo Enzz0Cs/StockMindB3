@@ -186,7 +186,7 @@ export default function App() {
 
   const fetchSummary = async (retries = 2, isRetry = false) => {
     const timeoutPromise = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error("Timeout")), 90000)
+      setTimeout(() => reject(new Error("Timeout")), 120000)
     );
 
     try {
@@ -195,6 +195,7 @@ export default function App() {
         setSummaryError(false);
       }
       
+      console.log(`Fetching market summary (Retry: ${isRetry ? 'Yes' : 'No'})`);
       const summary = await Promise.race([
         getMarketSummary(),
         timeoutPromise
