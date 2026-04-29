@@ -187,14 +187,13 @@ export async function getMarketSummary(): Promise<MarketSummaryData> {
   }
 
   const model = "gemini-3-flash-preview";
-  const prompt = `RESUMO B3 AGORA (${new Date().toLocaleDateString('pt-BR')}).
-  Use Google Search para extrair APENAS estes dados atuais:
-  1. Ibovespa, IFIX, SMLL e Dólar (R$ e %).
-  2. 3 Maiores Altas e 3 Maiores Baixas (Ticker e %).
-  3. Principais 3 notícias do mercado financeiro brasileiro.
-  4. 2 Destaques/insights rápidos sobre o clima do mercado.
+  const prompt = `RESUMO RÁPIDO DO MERCADO B3 (${new Date().toLocaleDateString('pt-BR')}).
+  Extraia via Google Search:
+  1. Ibovespa, IFIX, SMLL, Dólar (R$ e %).
+  2. 3 Maiores Altas e 3 Maiores Baixas.
+  3. 3 Notícias curtas.
   
-  Retorne APENAS o JSON em PORTUGUÊS. Priorize velocidade acima de tudo.`;
+  JSON PORTUGUÊS. Seja o mais rápido possível (máxima prioridade).`;
 
   const response = await ai.models.generateContent({
     model,
